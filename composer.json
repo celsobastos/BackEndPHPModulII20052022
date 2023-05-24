@@ -1,0 +1,17 @@
+{
+    "require": {
+        "monolog/monolog": "^3"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Impacta\\Curso\\" : "app/"
+        }
+    },
+    "scripts": {
+        "limpar": "php script.php 2",
+        "cs": "vendor/bin/phpcs --standard=PSR12 app/"
+    }
+}
