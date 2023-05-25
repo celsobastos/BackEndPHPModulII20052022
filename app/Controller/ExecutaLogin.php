@@ -2,14 +2,21 @@
 
 namespace Impacta\Curso\Controller;
 
+use Respect\Validation\Validator;
+
 class ExecutaLogin extends RenderHTML {
     public function requisicao() {
         $titulo = 'Pagina executa login 123';
         $file = 'login-user';
 
-        $_POST['email'];
+        $test = Validator::email()->validate($_POST['email']);
 
-        // $this->render($file, ['erro' => 'erroa ao enviar'], $titulo);
-        header('Location: /login?erro=123');
+        $mensagem = '';
+        if (!$test) {
+            $mensagem = 'Error: Email invalido';
+        }
+
+        $this->render($file, ['erro' => $mensagem], $titulo);
+        // header('Location: /login?erro=123');
     }
 }
