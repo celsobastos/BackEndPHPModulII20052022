@@ -17,12 +17,20 @@
 
         </div>
 
-        <?= $data['erro'] ?>
+        <?php if ($data['valida'] == 'true'): ?>
+            <div class="alert alert-primary" role="alert">
+                <?= $data['mensagem'] ?>
+            </div>
+        <?php else: ?>
+            <div class="alert alert-danger" role="alert">
+                <?= $data['mensagem'] ?>
+            </div>
+        <?php endif ?>
 
         <form  action="/executa-login" method="post" class="row g-3">
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" name="email">
+                <input type="text" class="form-control" id="inputEmail4" name="email">
             </div>
             <div class="col-md-6">
                 <label for="inputPassword4" class="form-label">Password</label>

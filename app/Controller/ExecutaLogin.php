@@ -12,11 +12,17 @@ class ExecutaLogin extends RenderHTML {
         $test = Validator::email()->validate($_POST['email']);
 
         $mensagem = '';
+        $valida = 'true';
         if (!$test) {
             $mensagem = 'Error: Email invalido';
+            $valida = 'false';
+        }
+        else {
+            $mensagem = 'Sucesso';
+            $valida = 'true';
         }
 
-        $this->render($file, ['erro' => $mensagem], $titulo);
+        $this->render($file, ['mensagem' => $mensagem, 'valida' => $valida ], $titulo);
         // header('Location: /login?erro=123');
     }
 }
