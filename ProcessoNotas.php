@@ -23,3 +23,17 @@ class ProcessaNotas {
         return $soma / count($this->notas);
     }
 }
+
+
+$notas1 = new ProcessaNotas('Celso');
+
+$notas2 = new ProcessaNotas('Otavio');
+
+$notas3 = $notas1;
+
+$notas3->nome = 'Jonas da Silva';
+
+var_dump($notas1);
+var_dump($notas2);
+var_dump($notas3);
+

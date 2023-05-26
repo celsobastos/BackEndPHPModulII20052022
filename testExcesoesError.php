@@ -2,15 +2,14 @@
 
 function funcao1() {
     echo 'Iniciando função 1' . PHP_EOL;
-    funcao2(20);
-    // try {
-    //     funcao2(100);
-    // }
-    // catch (Exception $e) {
-    //     echo 'Linha do erro: ' .  $e->getLine() . PHP_EOL;
-    //     echo 'Mensagem: ' .  $e->getMessage() . PHP_EOL;
-    //     // echo 'StackTrace: ' .  $e->getTraceAsString() . PHP_EOL;
-    // }
+    try {
+        funcao2(100);
+    }
+    catch (PremioSalarialException | Error | RuntimeException $e) {
+        echo 'Linha do erro: ' .  $e->getLine() . PHP_EOL;
+        echo 'Mensagem: ' .  $e->getMessage() . PHP_EOL;
+        // echo 'StackTrace: ' .  $e->getTraceAsString() . PHP_EOL;
+    }
 
 
     echo 'Finalizando função 1' . PHP_EOL;
