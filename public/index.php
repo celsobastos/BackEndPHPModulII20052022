@@ -1,14 +1,20 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+
+use Impacta\Curso\Controller\CadastrarCliente;
 use Impacta\Curso\Controller\Login;
 use Impacta\Curso\Controller\ExecutaLogin;
+use Impacta\Curso\Controller\Cadastro;
 
 $rota = $_SERVER['PATH_INFO'] ?? '/login';
 $rotas = [
     '/login' => Login::class,
     '/executa-login' => ExecutaLogin::class,
+    '/cadastro' => Cadastro::class,
+    '/cadastrar-cliente' => CadastrarCliente::class,
 ];
+
 if (!array_key_exists($rota, $rotas)) {
     $rota = '/login';
 }

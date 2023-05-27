@@ -13,6 +13,7 @@
     },
     "scripts": {
         "limpar": "php script.php 2",
-        "cs": "vendor/bin/phpcs --standard=PSR12 app/"
+        "cs": "vendor/bin/phpcs --standard=PSR12 app/",
+        "start server": "php -S localhost:8000 -t public/"
     }
 }

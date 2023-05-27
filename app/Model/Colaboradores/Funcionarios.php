@@ -8,7 +8,7 @@ class Funcionarios extends Pessoa {
     public function __construct(
         string $nome,
         Endereco $endereco,
-        string $cpf,
+        Cpf $cpf,
         float $salario,
     ) {
         $this->setSalario($salario);
