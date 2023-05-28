@@ -2,7 +2,7 @@
 
 namespace Impacta\Curso\Model\Colaboradores;
 
-class Funcionarios extends Pessoa {
+abstract class Funcionarios extends Pessoa {
     private float $salario;
 
     public function __construct(
@@ -21,4 +21,11 @@ class Funcionarios extends Pessoa {
         }
         $this->salario = $salario;
     }
+
+    protected function bonificacao() {
+        $this->salario += $this->setValor();
+    }
+
+    abstract protected function setValor(): float;
+
 }

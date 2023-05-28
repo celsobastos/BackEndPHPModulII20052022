@@ -2,19 +2,21 @@
 
 namespace Impacta\Curso\Controller;
 
+use Impacta\Curso\Infra\RepositorioCliente;
+use Impacta\Curso\Infra\MySql;
+use Impacta\Curso\Infra\Oracle;
+
 class CadastrarCliente extends RenderHTML {
     public function requisicao() {
 
-        // echo '<pre>';
-        // print_r($_POST);
-        // die;
+        // $email = $_POST['email'];
+        // $senha = $_POST['senha'];
+        // echo $email . '  ' . $senha;
 
+        $repositorio = new RepositorioCliente(new Oracle());
+        $repositorio->salvar($_POST);
 
-        $email = $_POST['email'];
-        $senha = $_POST['senha'];
-        echo $email . '  ' . $senha;
-
-        die('Você chegou até aqui');
+        die;
 
     }
 }
