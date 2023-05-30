@@ -2,6 +2,6 @@
 
 namespace Impacta\Curso\Model;
 
-interface Logar {
+interface LogarInterface {
     public function logar(string $user, string $senha) : string;
 }

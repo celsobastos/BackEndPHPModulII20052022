@@ -3,10 +3,35 @@
 namespace Impacta\Curso\Model\Conta;
 
 use Impacta\Curso\Model\Colaboradores\Pessoa;
-use Impacta\Curso\Model\Logar;
+use Impacta\Curso\Helper\Validate;
+use Impacta\Curso\Model\LogarInterface;
 
-class Titular extends Pessoa implements Logar{
+// use Impacta\Curso\Model\Logar;
+
+class Titular extends Pessoa implements LogarInterface {
     private float $conta;
+    private float $saldo;
+    public Validate $valida;
+
+    public function __construct() {
+        $this->saldo = 0;
+        $this->valida = new Validate();
+    }
+
+    public function getSaldo() {
+        return $this->saldo;
+    }
+
+    public function depositar(float $valorDeposito) {
+
+        $valorDeposito = $this->valida->validar($valorDeposito);
+
+        if ($valorDeposito <= 0) {
+            throw new \Exception('Saldo deve ser maior que zero.');
+        }
+
+        $this->saldo += $valorDeposito;
+    }
 
     /**
      * Soliciar Limite de cheque especial
@@ -36,4 +61,12 @@ class Titular extends Pessoa implements Logar{
         }
         return 'Não foi possivel Logar';
     }
+
+    public function soma($v1, $v2) {
+        return $v1 + $v2;
+    }
+
+
+
+
 }
