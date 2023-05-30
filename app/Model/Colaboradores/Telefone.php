@@ -7,4 +7,8 @@ class Telefone {
         private string $codigo,
         private string $numero,
     ){}
+
+    public function __toString() {
+        return "({$this->codigo}) {$this->numero}" ;
+    }
 }

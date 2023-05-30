@@ -3,7 +3,7 @@
 namespace Impacta\Curso\Model\Colaboradores;
 
 abstract class Funcionarios extends Pessoa {
-    private float $salario;
+    protected float $salario;
 
     public function __construct(
         string $nome,
@@ -22,10 +22,10 @@ abstract class Funcionarios extends Pessoa {
         $this->salario = $salario;
     }
 
-    protected function bonificacao() {
-        $this->salario += $this->setValor();
+    public function bonificacao() {
+        $this->salario += $this->salario * $this->addPorcentagem();
     }
 
-    abstract protected function setValor(): float;
+    abstract protected function addPorcentagem(): float;
 
 }

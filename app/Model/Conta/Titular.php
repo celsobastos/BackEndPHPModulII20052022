@@ -3,8 +3,9 @@
 namespace Impacta\Curso\Model\Conta;
 
 use Impacta\Curso\Model\Colaboradores\Pessoa;
+use Impacta\Curso\Model\Logar;
 
-class Titular extends Pessoa {
+class Titular extends Pessoa implements Logar{
     private float $conta;
 
     /**
@@ -27,5 +28,12 @@ class Titular extends Pessoa {
             throw new \Exception('Senha invalida');
         }
         $this->conta = $valor;
+    }
+
+    public function logar($usuario, $senha): string {
+        if ($senha == 'titular') {
+            return 'Logado';
+        }
+        return 'Não foi possivel Logar';
     }
 }

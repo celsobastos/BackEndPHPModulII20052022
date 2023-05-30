@@ -3,7 +3,7 @@
 namespace Impacta\Curso\Model\Colaboradores;
 
 class Estagiario extends Funcionarios {
-    protected function setValor(): float {
-        return 400;
+    protected function addPorcentagem(): float {
+        return 0.15;
     }
 }
