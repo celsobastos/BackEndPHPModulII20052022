@@ -46,11 +46,24 @@ Class TitularTest extends TestCase {
      * @covers deposito
      */
     public function testAdicionaDeposito() {
+        /**
+         * Mock do metodo validar para seu metodo devolver 200
+         */
+        $mockValidate = $this->createMock(Validate::class);
+        $mockValidate
+            ->expects($this->once())
+            ->method('validar')
+            ->willReturn(200);
+        $this->titular->valida = $mockValidate;
 
+        /**
+         * O metodo validar foi simulado e ele retorna dozentos
+         * mesmo passando 5000 por parametro.
+         */
         $this->titular->depositar(5000);
-        $this->titular->depositar(500);
+        //$this->titular->depositar(500);
         $result = $this->titular->getSaldo();
-        $this->assertSame($result, 5500.0);
+        $this->assertSame($result, 200.0);
         $this->assertIsFloat($result);
     }
 }

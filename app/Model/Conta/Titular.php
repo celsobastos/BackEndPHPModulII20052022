@@ -4,9 +4,8 @@ namespace Impacta\Curso\Model\Conta;
 
 use Impacta\Curso\Model\Colaboradores\Pessoa;
 use Impacta\Curso\Helper\Validate;
+use Impacta\Curso\Model\Colaboradores\Estagiario;
 use Impacta\Curso\Model\LogarInterface;
-
-// use Impacta\Curso\Model\Logar;
 
 class Titular extends Pessoa implements LogarInterface {
     private float $conta;
@@ -23,13 +22,10 @@ class Titular extends Pessoa implements LogarInterface {
     }
 
     public function depositar(float $valorDeposito) {
-
         $valorDeposito = $this->valida->validar($valorDeposito);
-
-        if ($valorDeposito <= 0) {
+        if (!$valorDeposito) {
             throw new \Exception('Saldo deve ser maior que zero.');
         }
-
         $this->saldo += $valorDeposito;
     }
 

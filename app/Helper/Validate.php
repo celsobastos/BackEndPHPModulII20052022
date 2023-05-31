@@ -3,8 +3,8 @@
 namespace Impacta\Curso\Helper;
 
 class Validate {
-    public function validar(float $value) {
-        if (!is_float($value)) {
+    public function validar($value) {
+        if ($value <= 0) {
             return false;
         }
 

@@ -15,7 +15,7 @@ abstract class Funcionarios extends Pessoa {
         parent::__construct($nome, $endereco, $cpf);
     }
 
-    private function setSalario(float $salario) : void {
+        private function setSalario(float $salario) : void {
         if ($salario < 1350) {
             throw new \Exception('salario deve ser maior que o minimo.');
         }
