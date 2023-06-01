@@ -9,20 +9,17 @@ class ExecutaLogin extends RenderHTML {
         $titulo = 'Pagina executa login 123';
         $file = 'login-user';
 
-        $test = Validator::email()->validate($_POST['email']);
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', 'https://viacep.com.br/ws/04849270/json/');
 
-        $mensagem = '';
-        $valida = 'true';
-        if (!$test) {
-            $mensagem = 'Error: Email invalido';
-            $valida = 'false';
-        }
-        else {
-            $mensagem = 'Sucesso';
-            $valida = 'true';
-        }
+        // echo $response->getStatusCode(); // 200
+        // echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
+        $data = json_decode($response->getBody(), JSON_OBJECT_AS_ARRAY); // '{"id": 1420053, "name": "guzzle", ...}'
 
-        $this->render($file, ['mensagem' => $mensagem, 'valida' => $valida ], $titulo);
+
+
+
+        $this->render($file, $data, $titulo);
         // header('Location: /login?erro=123');
     }
 }

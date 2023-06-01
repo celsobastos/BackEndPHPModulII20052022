@@ -14,19 +14,7 @@
         <div class="jumbotron mb-5">
             <h1 class="display-4">Hello, world!</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-
         </div>
-
-        <?php if ($data['valida'] == 'true'): ?>
-            <div class="alert alert-primary" role="alert">
-                <?= $data['mensagem'] ?>
-            </div>
-        <?php else: ?>
-            <div class="alert alert-danger" role="alert">
-                <?= $data['mensagem'] ?>
-            </div>
-        <?php endif ?>
-
         <form  action="/executa-login" method="post" class="row g-3">
             <div class="col-md-6">
                 <label for="inputEmail4" class="form-label">Email</label>
@@ -57,7 +45,7 @@
             </div>
             <div class="col-md-2">
                 <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <input type="text" value="<?= $data['cep'] ?>" class="form-control" id="inputZip">
             </div>
             <div class="col-12">
                 <div class="form-check">

@@ -62,32 +62,16 @@ var_dump($funcionario);
 
 
 interface TaxaInterface {
-    public function calcuarTaxa() : array;
+    public function calcuarTaxa() : float;
 }
 class Cliente implements TaxaInterface {
-
-    public float $taxa = 0.15;
-    public array $valor;
-
-    public function __construct(array $valor) {
-        $this->valor = $valor;
-    }
-
-    public function calcuarTaxa(): array {
-
-        $total = [];
-        foreach ($this->valor as $v) {
-            $total[] = $v * $this->taxa;
-        };
-
-        return $total;
+   public function calcuarTaxa(): float {
+        return 0.10;
     }
 }
 class Funcionario implements TaxaInterface {
-    public float $taxa = 0.10;
-
     public function calcuarTaxa():float {
-        return $this->taxa;
+        return 0.15;
     }
 }
 class CalculaTaxa {
@@ -96,9 +80,8 @@ class CalculaTaxa {
     }
 }
 
-
 $executa = new CalculaTaxa();
-$resultato = $executa->calcular(new Cliente([100, 500, 555]));
+$resultato = $executa->calcular(new Cliente());
 
 echo 'Total da Compra com desconto: ' . $resultato . PHP_EOL;
 
