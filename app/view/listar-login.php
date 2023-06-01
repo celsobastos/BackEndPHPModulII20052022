@@ -15,20 +15,21 @@
             <h1 class="display-4">Hello, world!</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         </div>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Login</th>
+                <th>senha</th>
+            </tr>
+            <?php foreach($data['data'] as $login): ?>
+                <tr>
+                    <td> <?= $login->getId(); ?></td>
+                    <td> <?= $login->getLogin(); ?> </td>
+                    <td> <?= md5($login->getSenha()); ?> </td>
+                </tr>
+            <?php endforeach; ?>
+         </table>
 
-        <form  action="/cadastrar-cliente" method="post" class="row g-3">
-            <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="text" class="form-control" id="inputEmail4" name="email">
-            </div>
-            <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword4" name="senha">
-            </div>
-            <div class="col-12">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-        </form>
     </section>
 </body>
 </html>

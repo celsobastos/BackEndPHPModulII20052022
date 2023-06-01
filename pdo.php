@@ -17,12 +17,12 @@ try {
 //     echo 'Inserido com sucesso';
 // }
 
-$nome = "Pedro Augusto <script>";
+$nome = "Celso Bastos 22";
 $sql = "INSERT INTO alunos (name) VALUES (?)";
 
-$statement = $conexao->prepare($sql);
-$statement->bindValue(1, $nome);
-$result = $statement->execute();
+$stmt = $conexao->prepare($sql);
+$stmt->bindValue(1, $nome);
+$result = $stmt->execute();
 if ($result) {
-    echo 'Alunos Inserido';
+    echo 'Alunos Inserido 1';
 }

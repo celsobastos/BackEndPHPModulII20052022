@@ -2,8 +2,8 @@
 
 namespace Impacta\Curso\Infra;
 
-class Oracle extends ConnectDb {
-    public function connect(): void {
+class Oracle implements ConnectInterface {
+    public function connect(): PDO {
         echo ('connectado ao Oracle');
     }
 }
