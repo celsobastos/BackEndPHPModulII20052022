@@ -19,8 +19,16 @@ class Mysql implements ConnectInterface {
                 $dsn,
                 'root',
                 '123456789',
-                [PDO::ATTR_ERRMODE, PDO::FETCH_ASSOC],
+                [
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                ]
             );
+
+            // informe que o PDO mostrará os erros
+            //$this->conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Quero o fetAll como array associativo
+            //$this->conexao->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         } catch (PDOException $error) {
             echo $error->getMessage();
@@ -31,7 +39,7 @@ class Mysql implements ConnectInterface {
         return $this->conexao;
     }
 
-    public function desconnect() : void {
-        $this->conexao = null;
+    public function close() : void {
+        unset($this->conexao);
     }
 }
