@@ -32,20 +32,26 @@ class RopositorioLogin {
     }
 
     public function all(): array {
-        $sql = "SELECT * FROM login;";
-        $stmt = $this->conexao->connect()->query($sql);
-        // $this->conexao->connect()->setAttribute(PDO::ATTR_ERRMODE, PDO::FETCH_ASSOC);
-        $listaLogin = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        try {
+            $sql = "SELECT * FROM login;";
+            $stmt = $this->conexao->connect()->query($sql);
+            // $this->conexao->connect()->setAttribute(PDO::ATTR_ERRMODE, PDO::FETCH_ASSOC);
+            $listaLogin = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $lista = [];
-        foreach ($listaLogin as $value) {
-            $lista[] = new Login (
-                $value['id'],
-                $value['login'],
-                $value['senha']
-            );
+            $lista = [];
+            foreach ($listaLogin as $value) {
+                $lista[] = new Login (
+                    $value['id'],
+                    $value['login'],
+                    $value['senha']
+                );
+            }
+            // $this->conexao = null;
+            return $lista;
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
         }
-        return $lista;
     }
 
     public function search(int $id) : Login {

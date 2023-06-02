@@ -30,4 +30,8 @@ class Mysql implements ConnectInterface {
     public function connect() : PDO {
         return $this->conexao;
     }
+
+    public function desconnect() : void {
+        $this->conexao = null;
+    }
 }
